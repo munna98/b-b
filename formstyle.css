@@ -1,55 +1,235 @@
-* {
-    box-sizing: border-box;
-  }
-  
-  /* Style inputs */
-  input[type=text], select, textarea {
+/**********************************/
+/******** Job Form CSS ************/
+/**********************************/
+.container {
+    position: relative;
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
-  }
-  
-  input[type=submit] {
-    background-color: #030f27;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  input[type=submit]:hover {
-    background-color: #ea2131;
-  }
-  
-  /* Style the container/contact section */
-  .container {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 10px;
-  }
-  
-  /* Create two columns that float next to eachother */
-  .column {
-    float: left;
+    max-width: 1200px;
+    margin: 45px auto;
+    padding: 0 15px;
+    background: transparent;
+}
+
+.container .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+    background: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.container .column {
+    position: relative;
     width: 50%;
-    margin-top: 6px;
+    padding: 45px 30px;
+}
+
+.container .column:first-child {
+    background: #ffffff;
+}
+
+.container .column:last-child {
+    background: #030f27;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 600px;
+}
+
+.container .column:last-child::before {
+    content: "Join Our Team";
+    color: #fdbe33;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.container h2 {
+    color: #030f27;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.container p {
+    color: #666666;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Form Styles */
+#submit-form {
+    position: relative;
+    width: 100%;
+}
+
+#submit-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #030f27;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#submit-form input[type="text"],
+#submit-form textarea {
+    width: 100%;
+    height: 50px;
+    padding: 12px 15px;
+    margin-bottom: 25px;
+    border: 2px solid #e6e6e6;
+    border-radius: 0;
+    background: #ffffff;
+    color: #030f27;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s;
+}
+
+#submit-form textarea {
+    height: 120px;
+    resize: vertical;
+    min-height: 120px;
+}
+
+#submit-form input[type="text"]:focus,
+#submit-form textarea:focus {
+    outline: none;
+    border-color: #fdbe33;
+    background: #ffffff;
+    box-shadow: 0 0 0 2px rgba(253, 190, 51, 0.1);
+}
+
+#submit-form input[type="text"]::placeholder,
+#submit-form textarea::placeholder {
+    color: #999999;
+    opacity: 1;
+}
+
+#submit-form input[type="submit"] {
+    width: 100%;
+    padding: 16px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    background: #030f27;
+    border: 2px solid #030f27;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#submit-form input[type="submit"]:hover {
+    color: #030f27;
+    background: #fdbe33;
+    border-color: #fdbe33;
+}
+
+/* Form Validation Styles */
+#submit-form input:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: #ea2131;
+}
+
+#submit-form input:valid:not(:focus):not(:placeholder-shown) {
+    border-color: #28a745;
+}
+
+/* Loading State */
+#submit-form input[type="submit"]:disabled {
+    background: #cccccc;
+    border-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+/* Success Message */
+.form-success {
+    display: none;
     padding: 20px;
-  }
-  
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-  @media screen and (max-width: 600px) {
-    .column, input[type=submit] {
-      width: 100%;
-      margin-top: 0;
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+/* Error Message */
+.form-error {
+    display: none;
+    padding: 20px;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 991.98px) {
+    .container .column {
+        width: 100%;
     }
-  }
+    
+    .container .column:last-child {
+        min-height: 300px;
+        padding: 30px 20px;
+    }
+    
+    .container .column:last-child::before {
+        font-size: 20px;
+    }
+    
+    .container h2 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .container {
+        margin: 30px auto;
+        padding: 0 10px;
+    }
+    
+    .container .column {
+        padding: 30px 20px;
+    }
+    
+    .container h2 {
+        font-size: 24px;
+    }
+    
+    .container p {
+        font-size: 14px;
+    }
+    
+    #submit-form input[type="submit"] {
+        padding: 14px 20px;
+        font-size: 14px;
+    }
+}
+
+/* Animation for form submission */
+@keyframes submitAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.98); }
+    100% { transform: scale(1); }
+}
+
+#submit-form input[type="submit"]:active {
+    animation: submitAnimation 0.3s ease;
+}
+
+/* Focus styles for accessibility */
+#submit-form input[type="text"]:focus-visible,
+#submit-form textarea:focus-visible {
+    outline: 2px solid #fdbe33;
+    outline-offset: 2px;
+}

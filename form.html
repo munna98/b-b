@@ -1,61 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="formstyle.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="keywords"
+    content="electrical works Kerala, electrical engineering Malappuram, B&B Group, electrical contractors Kerala">
+  <meta name="description"
+    content="B&B Group - Leading electrical engineering contractors in Kerala with 25 years of experience. Specializing in commercial buildings, hospitals, shopping complexes, and apartments across Malappuram and Kerala.">
+
+  <meta property="og:title" content="B&B Group - Electrical Engineering Contractors Kerala">
+  <meta property="og:description"
+    content="25 years of excellence in electrical contracting. Serving hospitals, malls, apartments across Kerala.">
+  <meta property="og:image" content="https://www.bbgroupareacode.com/img/about.jpeg">
+  <meta property="og:url" content="https://www.bbgroupareacode.com">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- CSS Libraries -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  <link href="lib/slick/slick.css" rel="stylesheet">
+  <link href="lib/slick/slick-theme.css" rel="stylesheet">
+
+  <!-- Template Stylesheet -->
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="formstyle.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>Document</title>
 </head>
+
 <body>
     <div class="container">
         <div style="text-align:center">
-          <h2>Join Our Team</h2>
-          <p>Fill This Form To Apply For A Job</p>
+            <h2>Join Our Team</h2>
+            <p>Fill This Form To Apply For A Job</p>
         </div>
         <div class="row">
-          
-          <div class="column">
-            <form id="submit-form" action="">
-              <label for="jt">Job Title</label>
-              <input type="text" id="jt" name="Job Title" placeholder="Job title..">
-              <label for="fname">Name</label>
-              <input type="text" id="fname" name="Name" placeholder="Your name..">
-              <label for="lname">Email</label>
-              <input type="text" id="lname" name="Email" placeholder="example@gmail.com">
-              <label for="country">Country</label>
-              <input type="text" id="country" name="Country" placeholder="India">
-              <label for="subject">Address</label>
-              <textarea id="subject" name="Address" ></textarea>
-              <label for="Phone">Phone</label>
-              <input type="text" id="phone" name="Phone" >
-              <input type="submit" value="Submit">
-            </form>
-          </div>
-          <div class="column">
-            <!--img src="bnb.png" style="width:100%"-->
-          </div>
+            <div class="column">
+                <div class="form-success" id="success-message">
+                    Form submitted successfully! We'll get back to you soon.
+                </div>
+                <div class="form-error" id="error-message">
+                    Something went wrong. Please try again.
+                </div>
+                <form id="submit-form" action="">
+                    <label for="jt">Job Title</label>
+                    <input type="text" id="jt" name="Job Title" placeholder="Job title.." required>
+                    
+                    <label for="fname">Full Name</label>
+                    <input type="text" id="fname" name="Name" placeholder="Your full name.." required>
+                    
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="Email" placeholder="example@gmail.com" required>
+                    
+                    <label for="country">Country</label>
+                    <input type="text" id="country" name="Country" placeholder="India" required>
+                    
+                    <label for="address">Address</label>
+                    <textarea id="address" name="Address" placeholder="Your complete address.." required></textarea>
+                    
+                    <label for="phone">Phone</label>
+                    <input type="text" id="phone" name="Phone" placeholder="Your phone number.." required>
+                    
+                    <input type="submit" value="Submit Application">
+                </form>
+            </div>
+            <div class="column">
+                <!-- Optional: You can add an image or other content here -->
+            </div>
         </div>
-      </div>
-      <script>
-        $("#submit-form").submit((e)=>{
-            e.preventDefault()
-            $.ajax({
-                url:"https://script.google.com/macros/s/AKfycbyQxXILyl5l5TCFPe6k6c2oLcsxi7gHlwfwgRLbSyecOro5qxNwoeNj2zWQ8xzyqKrx5A/exec",
-
-                data:$("#submit-form").serialize(),
-                method:"post",
-                success:function (response){
-                    alert("Form submitted successfully")
-                    window.location.reload()
-                    //window.location.href="https://google.com"
-                },
-                error:function (err){
-                    alert("Something Error")
+    </div>
     
+    <script>
+        $("#submit-form").submit((e) => {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = $("#submit-form input[type='submit']");
+            const originalText = submitBtn.val();
+            submitBtn.val("Submitting...").prop("disabled", true);
+            
+            // Hide previous messages
+            $(".form-success, .form-error").hide();
+            
+            $.ajax({
+                url: "https://script.google.com/macros/s/AKfycbznQTxWQBrPEI_1WnZc-maTLxfyOuv07aqeL8IwjgjulrphTRAlaMhd_fqQ1G6zln7AiA/exec",
+                data: $("#submit-form").serialize(),
+                method: "post",
+                success: function (response) {
+                    $("#success-message").show();
+                    submitBtn.val(originalText).prop("disabled", false);
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 3000);
+                },
+                error: function (err) {
+                    $("#error-message").show();
+                    submitBtn.val(originalText).prop("disabled", false);
                 }
-            })
-        })
+            });
+        });
     </script>
 </body>
 </html>

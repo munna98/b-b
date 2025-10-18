@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.bbgroupareacode.com/sitemap.xml
+
+User-agent: *
+Disallow: /lib/
+Disallow: /css/
+Disallow: /js/
